@@ -20,7 +20,13 @@
  
  <div class="content">
      <div class="container-fluid bg-white">
-        <button type="button" class="btn btn-primary mb-3">tambah pengurus</button>
+        <button type="button" class="btn btn-primary mb-3" 
+        style="
+        @if (session('jabatan') == 'siswa' || session('jabatan') == 'pembina')
+            {{'display: none'}}
+        @endif
+        "
+        >tambah pengurus</button>
 
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>

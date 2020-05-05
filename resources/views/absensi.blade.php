@@ -20,10 +20,10 @@
 
 <div class="content">
     <div class="container-fluid bg-white">
-        <!-- Button to Open the Modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            Open modal
-        </button>
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#InputAbsensi">
+    Launch demo modal
+  </button>
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
@@ -58,30 +58,29 @@
 </div>
 
 
-<!-- The Modal -->
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Modal Heading</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                Modal body..
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-
+<!-- Modal -->
+<div class="modal fade" id="InputAbsensi" tabindex="-1" role="dialog" aria-labelledby="InputAbsensiLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="InputAbsensiLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+          {!!Form::open(['route' =>'import.absensi', 'class' => 'form-horizontal','enctype' => 
+          'multipart/form-data'])!!}
+
+          {!!Form::file('data_absensi')!!}
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-sm btn-primary" value="Import">
+        </form>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 @endsection
 
 @push('scripts')

@@ -19,6 +19,8 @@ Route::get('/pengurus', 'PengurusController@index');
 
 Route::get('/Absensi', 'AbsensiController@index');
 
+Route::post('/Absensi/import', 'AbsensiController@importabsensi')->name('import.absensi');
+
 Route::get('/Inventaris', 'InventarisController@index');
 
 Route::get('/iuran', 'IuranController@index');
@@ -30,6 +32,10 @@ Route::post('/login_user', 'LoginUserController@index');
 Route::get('/logout_user', 'LoginUserController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/siswa', 'SiswaController@index');
+
 Route::get('/sku', 'SKUController@index');
+
 Route::get('/surat', 'SuratController@index');
+

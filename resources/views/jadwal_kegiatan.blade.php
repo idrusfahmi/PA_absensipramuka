@@ -22,6 +22,12 @@
     <div class="container-fluid bg-white">
        <button type="button" class="btn btn-primary mb-3">Upload Absensi</button>
 
+       <form class="form-inline mb-3" action="/jadwal_kegiatan" method="GET">
+        <label for="example-month-input" class="col-form-label">Bulan</label>
+          <input class="form-control ml-3" type="month" value="{{date('Y-m')}}" name="pilihbulan" id="example-month-input">
+          <button type="submit" class="btn btn-primary ml-3">Pilih Bulan</button>
+       </form>
+
        <table id="example" class="table table-striped table-bordered" style="width:100%">
            <thead>
                <tr>

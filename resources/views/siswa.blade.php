@@ -21,6 +21,31 @@
  <div class="content">
      <div class="container-fluid bg-white">
         <button type="button" class="btn btn-primary mb-3">tambah pengurus</button>
+        <form class="form-inline mb-3" action="/siswa" method="GET">
+                <label for="sel1">Kelas : </label>
+                <select class="form-control ml-3" id="pilihkelas" name="pilihkelas">
+                    <option value="Semua Kelas">Semua Kelas</option>
+                    <option value="AKL 1">AKL 1</option>
+                    <option value="AKL 2">AKL 2</option>
+                    <option value="BDP Alfa">BDP Alfa</option>
+                    <option value="BDP Regular">BDP Regular</option>
+                    <option value="MM 1">MM 1</option>
+                    <option value="MM 2">MM 2</option>
+                    <option value="OTKP Industri">OTKP Industri</option>
+                    <option value="OTKP Regular">OTKP Regular</option>
+                    <option value="PBS 1">PBS 1</option>
+                    <option value="PBS 2">PBS 2</option>
+                    <option value="PH Industri">PH Industri</option>
+                    <option value="PH Regular">PH Regular</option>
+                    <option value="PSPT">PSPT</option>
+                    <option value="TB Industri">TB Industri</option>
+                    <option value="TB Regular">TB Regular</option>
+                    <option value="TKKR">TKKR</option>
+                    <option value="TPTU">TPTU</option>
+                </select>
+                <button type="submit" class="btn btn-primary ml-3">Pilih Kelas</button>
+        </form>
+     
 
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
