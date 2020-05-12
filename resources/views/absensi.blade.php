@@ -21,8 +21,8 @@
 <div class="content">
     <div class="container-fluid bg-white">
         <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#InputAbsensi">
-    Launch demo modal
+<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#InputAbsensi">
+    Import Absensi
   </button>
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
@@ -31,7 +31,6 @@
                     <th>Tanggal Kegiatan</th>
                     <th>Absensi</th>
                     <th>Keterangan Absensi</th>
-                    <th>Jenis Kelamin</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,13 +40,6 @@
                     <td>{{$key->tanggal_kegiatan}}</td>
                     <td>{{$key->absensi}}</td>
                     <td>{{$key->keterangan_absensi}}</td>
-                    <td>
-                        @if ($key->jeniskelamin_siswa == 1)
-                        Laki-laki
-                        @else
-                        Perempuan
-                        @endif
-                    </td>
                 </tr>
                 @endforeach
 

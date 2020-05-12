@@ -15,13 +15,16 @@ class LoginUserController extends Controller
         $password = $request->input('password');
 
         if(siswa::where('username', '=', $username)->where('password', '=', $password)->first()){
-            $this->createSession($username, 'siswa');
+            $data = siswa::where('username', '=', $username)->first();
+            $nama = $data->nama_siswa;
+            $this->createSession($username, 'siswa', $nama);
             return redirect('/halaman_utama'); 
         }
         else if(pengurus::where('username', '=', $username)->where('password', '=', $password)->first()){
-            $jabatan = pengurus::where('username', '=', $username)->first();
-            $jabatan = $jabatan->jabatan;
-            $this->createSession($username, $jabatan);
+            $data = pengurus::where('username', '=', $username)->first();
+            $jabatan = $data->jabatan;
+            $nama= $data->nama;
+            $this->createSession($username, $jabatan, $nama);
             return redirect('/halaman_utama'); 
         }
         else{
@@ -29,9 +32,10 @@ class LoginUserController extends Controller
         }
     }
 
-    function createSession($username, $jabatan){
+    function createSession($username, $jabatan, $nama){
         Session::put('username', $username);
-        Session::put('jabatan', $jabatan);       
+        Session::put('jabatan', $jabatan);   
+        Session::put('nama', $nama);    
     }
 
     function logout(){

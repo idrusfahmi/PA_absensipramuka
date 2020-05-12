@@ -20,7 +20,9 @@
  
  <div class="content">
      <div class="container-fluid bg-white">
-        <button type="button" class="btn btn-primary mb-3">tambah pengurus</button>
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#InputSiswa">
+            Import Absensi
+          </button>
         <form class="form-inline mb-3" action="/siswa" method="GET">
                 <label for="sel1">Kelas : </label>
                 <select class="form-control ml-3" id="pilihkelas" name="pilihkelas">
@@ -85,6 +87,29 @@
 
      </div>
  </div>
+ <!-- Modal -->
+<div class="modal fade" id="InputSiswa" tabindex="-1" role="dialog" aria-labelledby="InputSiswaLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="InputSiswaLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {!!Form::open(['route' =>'import.siswa', 'class' => 'form-horizontal','enctype' => 
+          'multipart/form-data'])!!}
+
+          {!!Form::file('data_siswa')!!}
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-sm btn-primary" value="Import">
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
  
  @endsection
 

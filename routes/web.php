@@ -34,6 +34,7 @@ Route::get('/logout_user', 'LoginUserController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/siswa', 'SiswaController@index');
+Route::post('/siswa/import', 'SiswaController@importsiswa')->name('import.siswa');
 
 Route::get('/sku', 'SKUController@index');
 
