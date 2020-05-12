@@ -40,3 +40,4 @@ Route::get('/sku', 'SKUController@index');
 
 Route::get('/surat', 'SuratController@index');
 
+Route::get('/profil', 'ProfilController@index');
