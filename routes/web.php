@@ -18,6 +18,7 @@ Route::get('/halaman_utama', 'HalamanUtamaController@index');
 Route::get('/pengurus', 'PengurusController@index');
 
 Route::get('/Absensi', 'AbsensiController@index');
+Route::get('/DataAbsensi/{username}', 'AbsensiController@dataabsensi');
 
 Route::post('/Absensi/import', 'AbsensiController@importabsensi')->name('import.absensi');
 

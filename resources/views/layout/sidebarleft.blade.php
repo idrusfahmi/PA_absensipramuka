@@ -98,7 +98,17 @@
                   style="display:none"
                 @endif
                  >
-                     <a href="/Absensi" class="nav-link">
+                     <a href=
+                     @if (Session::get('jabatan')=='siswa')
+                     {{
+                         "/DataAbsensi/".Session::get('username')
+                     }} @else {
+                        {{
+                         "/Absensi"
+                     }}
+                     }
+                @endif
+                      class="nav-link">
                          <i class="nav-icon fas fa-calendar"></i>
                          <p>
                              Absensi
