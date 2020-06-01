@@ -20,7 +20,7 @@
 
 <div class="content">
     <div class="container-fluid bg-white">
-       <button type="button" class="btn btn-primary mb-3">Upload Absensi</button>
+       <button type="button" class="btn btn-primary mb-3" >Tambah SKU</button>
 
        <table id="example" class="table table-striped table-bordered" style="width:100%">
            <thead>
@@ -28,26 +28,80 @@
                 <th>Nomor SKU</th>
                 <th>Nama Siswa</th>
                 <th>Nama Penguji</th>
-                <th>Judul Tes</th>
                 <th>Hasil</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($data as $key)
             <tr>
-                <td>{{$key->id_sku}}</td>
+                <td>{{$key->no_sku}}</td>
                 <td>{{$key->nama_siswa}}</td>
                 <td>{{$key->nama}}</td>
-                <td>{{$key->judul_tes}}</td>
                 <td>
-                    @if ($key->hasil == 1)
-                    Lulus
-                    @else
-                    Belum Lulus
-                    @endif
+                    {{$key->hasil}}
+                </td>
+                <td>
+                    <button  data-toggle="modal" data-target="#ModalEdit{{$key->id_sku}}" type="button"  class="btn btn-warning mb-3">Edit</button>
+                    <button type="button" onclick="hapus_data({{$key->id_sku}})" class="btn btn-danger mb-3">Hapus</button>
                 </td>
             </tr>
-               
+               <!-- Button to Open the Modal -->
+
+  
+  <!-- The Modal -->
+  <div class="modal fade" id="ModalEdit{{$key->id_sku}}">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form method="POST" action="/sku/edit">
+            @csrf
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <div class="form-group">
+                <input type="hidden" name="id" value="{{$key->id_sku}}">
+                <label for="nomor">Nomor Test :</label>
+                <select name="nomor" class="form-control">
+                <option value="{{$key->no_sku}}" selected>{{$key->no_sku}}</option>
+                @foreach ($nomer_sku as $item)
+                <option value="{{$item->id}}">{{$item->no_sku}}</option>
+                @endforeach
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="penguji">Nama Penguji :</label>
+                <select name="penguji" class="form-control" >
+                    <option value="{{$key->id}}" selected>{{$key->nama}}</option>
+                @foreach ($pengurus as $item)
+
+                <option value="{{$item->id}}">{{$item->nama}}</option>
+                @endforeach
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="hasil">Hasil :</label>
+                <select name="hasil" class="form-control">
+                    <option value="{{$key->hasil}}" selected>{{$key->hasil}}</option>
+                    <option value="Lulus">Lulus</option>
+                    <option value="Tidak Lulus">Tidak Lulus</option>
+                  </select>
+              </div>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="submit" onclick="edit_data()" class="btn btn-success" >Simpan</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
                @endforeach
 
            </tbody>
@@ -62,6 +116,90 @@
     <script>
         $(document).ready(function() {
            $('#example').DataTable();
+
+           $("#edit_data").submit(function(event){
+                event.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type:'POST',
+                    dataType: 'json',
+                    url: '/sku/edit',
+                    data:formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success:function(data){
+                        if(data.status === 'sukses'){
+                            Swal.fire(
+                                'Sukses!',
+                                data.response,
+                                'success'
+                            ).then(() => {
+                                location.reload(true);
+                            });
+                        } else {
+                            Swal.fire(
+                                'Oops...',
+                                data.response,
+                                'error'
+                            )
+                        }
+                    }
+                });
+            });
+
        });
     </script>
+    <script>
+        function edit_data(){
+            Swal.fire(
+                                    'Sukses',
+                                    'Berhasil lanjut',
+                                    'success'
+                                )
+        }
+
+        function hapus_data(id){
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Data akan dihapus!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                confirmButtonText: '<i class="fa fa-trash"> Ya, hapus data',
+                cancelButtonText: '<i class="fa fa-times"> Batal'
+            }).then((result) => {
+                if(result.value){
+                    var formdata = new FormData();
+                    formdata.append('id', id);
+                    $.ajax({
+                        type: 'POST',
+                        dataType: 'json',
+                        url: '/sku/hapus',
+                        data: formdata,
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success:function(data){
+                            if(data.status === 'sukses'){
+                                Swal.fire(
+                                    'Sukses!',
+                                    data.response,
+                                    'success'
+                                ).then(() => {
+                                    location.reload(true);
+                                });
+                            } else {
+                                Swal.fire(
+                                    'Loh Cuk',
+                                    data.response,
+                                    'error'
+                                )
+                            }
+                        }
+                    });
+                }
+            });
+        }
+        </script>
 @endpush

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/halaman_utama', 'HalamanUtamaController@index');
 
 Route::get('/pengurus', 'PengurusController@index');
+Route::post('/pengurus/import', 'PengurusController@importpengurus')->name('import.pengurus');
 
 Route::get('/Absensi', 'AbsensiController@index');
 Route::get('/DataAbsensi/{username}', 'AbsensiController@dataabsensi');
@@ -23,6 +24,7 @@ Route::get('/DataAbsensi/{username}', 'AbsensiController@dataabsensi');
 Route::post('/Absensi/import', 'AbsensiController@importabsensi')->name('import.absensi');
 
 Route::get('/Inventaris', 'InventarisController@index');
+Route::post('/Inventaris/import', 'InventarisController@importinventaris')->name('import.inventaris');
 
 Route::get('/iuran', 'IuranController@index');
 
@@ -38,6 +40,8 @@ Route::get('/siswa', 'SiswaController@index');
 Route::post('/siswa/import', 'SiswaController@importsiswa')->name('import.siswa');
 
 Route::get('/sku', 'SKUController@index');
+Route::post('/sku/edit', 'SKUController@edit');
+Route::post('/sku/hapus', 'SKUController@hapus');
 
 Route::get('/surat', 'SuratController@index');
 

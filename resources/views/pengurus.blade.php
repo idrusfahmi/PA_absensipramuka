@@ -20,13 +20,13 @@
  
  <div class="content">
      <div class="container-fluid bg-white">
-        <button type="button" class="btn btn-primary mb-3" 
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#InputPengurus" 
         style="
         @if (session('jabatan') == 'siswa' || session('jabatan') == 'pembina')
             {{'display: none'}}
         @endif
         "
-        >tambah pengurus</button>
+        >Tambah Pengurus</button>
 
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
@@ -64,6 +64,28 @@
 
      </div>
  </div>
+ <div class="modal fade" id="InputPengurus" tabindex="-1" role="dialog" aria-labelledby="InputPengurusLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="InputPengurusLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {!!Form::open(['route' =>'import.pengurus', 'class' => 'form-horizontal','enctype' => 
+          'multipart/form-data'])!!}
+
+          {!!Form::file('data_pengurus')!!}
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-sm btn-primary" value="Import">
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
  
  @endsection
 

@@ -102,11 +102,11 @@
                      @if (Session::get('jabatan')=='siswa')
                      {{
                          "/DataAbsensi/".Session::get('username')
-                     }} @else {
+                     }} 
+                    @else
                         {{
                          "/Absensi"
                      }}
-                     }
                 @endif
                       class="nav-link">
                          <i class="nav-icon fas fa-calendar"></i>
