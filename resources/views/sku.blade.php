@@ -20,7 +20,9 @@
 
 <div class="content">
     <div class="container-fluid bg-white">
-       <button type="button" class="btn btn-primary mb-3" >Tambah SKU</button>
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#InputSKU">
+            Import Data SKU
+          </button>
 
        <table id="example" class="table table-striped table-bordered" style="width:100%">
            <thead>
@@ -109,6 +111,28 @@
 
     </div>
 </div>
+<div class="modal fade" id="InputSKU" tabindex="-1" role="dialog" aria-labelledby="InputSKULabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="InputSKULabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {!!Form::open(['route' =>'import.sku', 'class' => 'form-horizontal','enctype' => 
+          'multipart/form-data'])!!}
+
+          {!!Form::file('data_sku')!!}
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-sm btn-primary" value="Import">
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 @endsection
 

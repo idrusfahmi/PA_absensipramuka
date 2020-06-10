@@ -154,6 +154,16 @@
                   style="display:none"
                 @endif
                  >
+                 <a href=
+                     @if (Session::get('jabatan')=='siswa')
+                     {{
+                         "/DataIuran/".Session::get('username')
+                     }} 
+                    @else
+                        {{
+                         "/iuran"
+                     }}
+                @endif
                      <a href="/iuran" class="nav-link">
                          <i class="nav-icon fa fa-dollar-sign"></i>
                          <p>
@@ -223,6 +233,16 @@
                   style="display:none"
                 @endif
                  >
+                 <a href=
+                     @if (Session::get('jabatan')=='siswa')
+                     {{
+                         "/DataSKU/".Session::get('username')
+                     }} 
+                    @else
+                        {{
+                         "/sku"
+                     }}
+                @endif
                      <a href="/sku" class="nav-link">
                          <i class="nav-icon fa fa-user"></i>
                          <p>

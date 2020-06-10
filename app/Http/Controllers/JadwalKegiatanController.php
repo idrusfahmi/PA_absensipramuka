@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\jadwal_kegiatan;
 
 use Illuminate\Http\Request;
+use App\YourExport;
+use App\Imports\JadwalImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class JadwalKegiatanController extends Controller
 {
@@ -40,5 +43,14 @@ class JadwalKegiatanController extends Controller
 
             return view('jadwal_kegiatan', compact('data'));
         }
+    }
+    public function importjadwal(Request $request)
+    {
+//         $path1 = $request->file('mcafile')->store('temp'); 
+// $path=storage_path('app').'/'.$path1;  
+// dd($request);
+       Excel::import(new JadwalImport,$request->file('data_jadwal'));
+       
+        
     }
 }

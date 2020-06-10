@@ -27,8 +27,11 @@ Route::get('/Inventaris', 'InventarisController@index');
 Route::post('/Inventaris/import', 'InventarisController@importinventaris')->name('import.inventaris');
 
 Route::get('/iuran', 'IuranController@index');
+Route::get('/DataIuran/{username}', 'IuranController@dataiuran');
+Route::post('/iuran/import', 'IuranController@importiuran')->name('import.iuran');
 
 Route::get('/jadwal_kegiatan', 'JadwalKegiatanController@index');
+Route::post('/jadwal_kegiatan/import', 'JadwalKegiatanController@importjadwal')->name('import.jadwal');
 Auth::routes();
 
 Route::post('/login_user', 'LoginUserController@index');
@@ -40,6 +43,8 @@ Route::get('/siswa', 'SiswaController@index');
 Route::post('/siswa/import', 'SiswaController@importsiswa')->name('import.siswa');
 
 Route::get('/sku', 'SKUController@index');
+Route::get('/DataSKU/{username}', 'SKUController@datasku');
+Route::post('/sku/import', 'SKUController@importsku')->name('import.sku');
 Route::post('/sku/edit', 'SKUController@edit');
 Route::post('/sku/hapus', 'SKUController@hapus');
 

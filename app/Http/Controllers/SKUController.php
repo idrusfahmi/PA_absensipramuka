@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\sku;
 use DB;
 
+
 use Illuminate\Http\Request;
+use App\YourExport;
+use App\Imports\SKUImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SKUController extends Controller
 {
@@ -46,5 +50,43 @@ class SKUController extends Controller
             return response()->json($response);
         }
         return response()->json($response);
+    }
+    public function importsku(Request $request)
+    {
+//         $path1 = $request->file('mcafile')->store('temp'); 
+// $path=storage_path('app').'/'.$path1;  
+// dd($request);
+       Excel::import(new SKUImport,$request->file('data_sku'));
+       
+        
+    }
+    function datasku($username){
+        $cek_lulus = DB::table('sku as A')
+        ->join('isi_sku AS B', 'B.id', '=', 'A.id_sku')
+        ->where('A.id_siswa', '=', $username)
+        ->where('B.tingkatan', '=', 'Bantara')
+        ->count();
+
+        if($cek_lulus <= 23){
+            $tingkatan = 'Bantara';
+        }
+        else{
+            $tingkatan = 'Laksana';
+        }
+
+        DB::connection()->enableQueryLog();
+
+        $data=DB::table(DB::raw('(select * from sku where id_siswa = "' . $username . '") AS sku'))
+            ->rightJoin('isi_sku', 'sku.id_sku', '=', 'isi_sku.id')
+            ->leftJoin('siswa', 'sku.id_siswa', '=', 'siswa.id_siswa')
+            ->leftJoin('pengurus', 'sku.id_pengurus', '=', 'pengurus.id')
+            ->where('tingkatan', '=', $tingkatan)
+            ->orderBy('isi_sku.no_sku', 'ASC')
+            ->get();
+
+        // dd($data);
+        // dd(DB::getQueryLog());
+        return view('datasku', compact('data'));
+
     }
 }

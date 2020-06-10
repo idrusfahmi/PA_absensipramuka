@@ -20,8 +20,9 @@
 
 <div class="content">
     <div class="container-fluid bg-white">
-       <button type="button" class="btn btn-primary mb-3">Upload Absensi</button>
-
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#InputJadwal">
+            Import Jadwal Kegiatan
+          </button>
        <form class="form-inline mb-3" action="/jadwal_kegiatan" method="GET">
         <label for="example-month-input" class="col-form-label">Bulan</label>
           <input class="form-control ml-3" type="month" value="{{date('Y-m')}}" name="pilihbulan" id="example-month-input">
@@ -48,6 +49,28 @@
 
     </div>
 </div>
+<div class="modal fade" id="InputJadwal" tabindex="-1" role="dialog" aria-labelledby="InputJadwalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="InputJadwalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {!!Form::open(['route' =>'import.jadwal', 'class' => 'form-horizontal','enctype' => 
+          'multipart/form-data'])!!}
+
+          {!!Form::file('data_jadwal')!!}
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-sm btn-primary" value="Import">
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 @endsection
 
