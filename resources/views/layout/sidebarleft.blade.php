@@ -76,8 +76,23 @@
                   style="display:none"
                 @endif
                  >
-                     <a href="/pengurus" class="nav-link">
-                         <i class="nav-icon fas fa-user"></i>
+                 <a href=
+                     @if (Session::get('jabatan')=='siswa')
+                     {{
+                         "/DataPengurus"
+                     }} 
+                    @elseif (Session::get('jabatan')=='pembina')
+                    {{
+                        "/DataPengurus"
+                    }}
+
+                    @else
+                        {{
+                         "/pengurus"
+                     }}
+                @endif
+                      class="nav-link">
+                         <i class="nav-icon fas fa-calendar"></i>
                          <p>
                              Pengurus
                          </p>

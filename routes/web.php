@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/halaman_utama', 'HalamanUtamaController@index');
 
 Route::get('/pengurus', 'PengurusController@index');
+Route::get('/DataPengurus', 'DataPengurusController@index');
 Route::post('/pengurus/import', 'PengurusController@importpengurus')->name('import.pengurus');
 
 Route::get('/Absensi', 'AbsensiController@index');

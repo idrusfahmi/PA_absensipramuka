@@ -63,6 +63,13 @@
                             -
                         @endif
                     </td>
+                    <td>
+                        @if (array_key_exists("minggu_5",$key))
+                            {{$key['minggu_5']}}
+                        @else
+                            -
+                        @endif
+                    </td>
                 </tr>
                 @endforeach
  

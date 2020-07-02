@@ -62,7 +62,6 @@ class AbsensiController extends Controller
                 $dataarray[$loopindex]['minggu_' . $loop] = $key->absensi;
             }
         }
-        // dd($dataarray);
 
         $array_bulan = array(
             'EMBOH',

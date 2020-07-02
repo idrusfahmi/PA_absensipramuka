@@ -38,7 +38,6 @@
                     <th>Jenis Kelamin</th>
                     <th>Nomor HP</th>
                     <th>Email</th>
-                    <th>Foto</th>
                     <th>Jabatan</th>
                     <th>Username</th>
                 </tr>
@@ -53,7 +52,6 @@
                     <td>{{$key->jenis_kelamin}}</td>
                     <td>{{$key->no_hp}}</td>
                     <td>{{$key->email}}</td>
-                    <td>{{$key->foto}}</td>
                     <td>{{$key->jabatan}}</td>
                     <td>{{$key->username}}</td>
                 </tr>
