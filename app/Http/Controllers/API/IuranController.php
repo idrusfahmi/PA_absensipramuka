@@ -14,7 +14,7 @@ class IuranController
 
         $data=siswa::where('username', '=', $username)
         ->first();
-        $dataiuran=iuran::select('*', DB::raw('month(tanggal_kegiatan) AS month'))
+        $dataiuran=iuran::select('*', DB::raw('month(periode) AS month'))
         ->where('id_siswa', '=', $data->id_siswa)
         ->get();
 
@@ -51,7 +51,7 @@ class IuranController
             if($iterasi_bulan == $bulan){
                 if($boolean1 == 0){
                     $boolean1 = 1;
-                    $dataarray[$loopindex]['bulan'] = $key->month;
+                    $dataarray[$loopindex]['bulan'] = $array_bulan[$key->month];
                 }
 
                 $dataarray[$loopindex]['minggu_' . $loop] = $key->keterangan;
@@ -61,15 +61,17 @@ class IuranController
                 $loopindex++;
                 $loop = 1;
                 $iterasi_bulan = $bulan;
-                $dataarray[$loopindex]['bulan'] = $key->month;
+                $dataarray[$loopindex]['bulan'] = $array_bulan[$key->month];
                 $dataarray[$loopindex]['minggu_' . $loop] = $key->keterangan;
             }
         }
+        // dd($dataarray);
 
         $data=array(
             'status'=> 'sukses',
             'data' => $dataarray
         );
         return response()->json($data);
+
     }
 }

@@ -20,8 +20,11 @@
  
  <div class="content">
      <div class="container-fluid bg-white">
-        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#InputSiswa">
-            Import Absensi
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#InputSiswa"
+        style="@if (session('jabatan') == 'siswa' || session('jabatan') == 'pembina')
+        {{'display: none'}}
+    @endif">
+            Import Data Siswa
           </button>
         <form class="form-inline mb-3" action="/siswa" method="GET">
                 <label for="sel1">Kelas : </label>

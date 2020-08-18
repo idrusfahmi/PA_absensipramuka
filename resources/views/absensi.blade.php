@@ -21,7 +21,10 @@
 <div class="content">
     <div class="container-fluid bg-white">
         <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#InputAbsensi">
+<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#InputAbsensi"
+style="@if (session('jabatan') == 'siswa' || session('jabatan') == 'pembina')
+{{'display: none'}}
+@endif">
     Import Absensi
   </button>
         <table id="example" class="table table-striped table-bordered" style="width:100%">
