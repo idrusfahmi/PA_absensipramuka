@@ -22,3 +22,4 @@ Route::post('/absensi_siswa', 'API\AbsensiController@absensiSiswa');
 Route::post('/profil_siswa', 'API\ProfilController@profilSiswa');
 Route::post('/iuran_siswa', 'API\IuranController@iuranSiswa');
 Route::post('/sku_siswa', 'API\SkuController@skuSiswa');
+Route::post('/jadwal_siswa', 'API\JadwalKegiatanController@jadwalSiswa');

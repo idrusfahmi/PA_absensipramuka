@@ -20,7 +20,7 @@
 
 <div class="content">
     <div class="container-fluid bg-white">
-        <button type="button" class="btn btn-primary mb-3">Upload Absensi</button>
+        <button type="button" class="btn btn-primary mb-3">Import Surat</button>
 
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>

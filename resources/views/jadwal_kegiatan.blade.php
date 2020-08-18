@@ -20,13 +20,25 @@
 
 <div class="content">
     <div class="container-fluid bg-white">
-        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#InputJadwal">
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#InputJadwal"
+        style="@if (session('jabatan') == 'siswa' || session('jabatan') == 'pembina')
+        {{'display: none'}}
+    @endif">
             Import Jadwal Kegiatan
           </button>
-       <form class="form-inline mb-3" action="/jadwal_kegiatan" method="GET">
-        <label for="example-month-input" class="col-form-label">Bulan</label>
-          <input class="form-control ml-3" type="month" value="{{date('Y-m')}}" name="pilihbulan" id="example-month-input">
-          <button type="submit" class="btn btn-primary ml-3">Pilih Bulan</button>
+          
+       <form class="form-inline mb-3" action="/jadwal_kegiatan" method="GET" style="@if (session('jabatan') == 'siswa' || session('jabatan') == 'pembina')
+       {{'display: none'}}
+   @endif">
+        <label for="example-month-input" class="col-form-label" style="@if (session('jabatan') == 'siswa' || session('jabatan') == 'pembina')
+        {{'display: none'}}
+    @endif">Bulan</label>
+          <input class="form-control ml-3" type="month" style="@if (session('jabatan') == 'siswa' || session('jabatan') == 'pembina')
+          {{'display: none'}}
+      @endif" value="{{date('Y-m')}}" name="pilihbulan" id="example-month-input">
+          <button type="submit" class="btn btn-primary ml-3" style="@if (session('jabatan') == 'siswa' || session('jabatan') == 'pembina')
+          {{'display: none'}}
+      @endif">Pilih Bulan</button>
        </form>
 
        <table id="example" class="table table-striped table-bordered" style="width:100%">

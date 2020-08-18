@@ -88,7 +88,7 @@ input[type="number"] {
                   </div> 
             </div>
             <div class="col-3">
-                NGTD
+                
             </div>
             
             <div class="col-6 mt-3">

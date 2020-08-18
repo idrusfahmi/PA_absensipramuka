@@ -29,6 +29,7 @@
                     <th>Minggu Ke 2</th>
                     <th>Minggu Ke 3</th>
                     <th>Minggu Ke 4</th>
+                    <th>Minggu Ke 5</th>
                 </tr>
             </thead>
             <tbody>

@@ -16,12 +16,12 @@ class AbsensiImport implements ToCollection
         // dd($collection);
             foreach ($collection as $key =>  $row) {
                 if($key >= 2){
-                    $tanggal_kegiatan = ($row[2] - 25569) * 86400;
+                    $tanggal_kegiatan = ($row[1] - 25569) * 86400;
                     Absensi::create([
-                        'id_siswa' => $row[1],
+                        'id_siswa' => $row[0],
                         'tanggal_kegiatan' => gmdate('Y-m-d',$tanggal_kegiatan),
-                        'absensi' => $row[3],
-                        'keterangan_absensi' => $row[4],
+                        'absensi' => $row[2],
+                        'keterangan_absensi' => $row[3],
                         ]);
                 }         
         }

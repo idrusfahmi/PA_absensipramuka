@@ -6,7 +6,43 @@
  
  <div class="container-fluid bg-white">
     <div class="row mt-2">
-        
+        <div class="col-sm-12">
+            <table id="dataabsensi" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Foto</th> <br/>
+                        <th>Bio</th> <br/>
+                        <th>Adres</th> <br/>
+                        <th>Status</th> <br/>
+                        <th>Kontak</th>
+                    </tr>
+                </thead>
+                @foreach ($data as $data)
+                <tr>
+                    <td>
+                        <img style="width:40px !important; height:40px !important;" src="image/avatar/{{$data->avatar}}" class="img-circle elevation-2" alt="User Image">
+                    </td>
+                    <td>
+                    <b>Nama :</b>{{$data->nama}}<br/>
+                        <b>Tmpt. Tgl.  Lahir :</b>{{$data->tempat_lahir.', '.$data->tanggal_lahir}}<br/>
+                        <b>Jenis Kelamin :</b>{{$data->jenis_kelamin}}
+                    </td>
+                    <td><b>Alamat :</b>{{$data->alamat}}</td>
+                    <td>
+                        {{-- <b>Kelas :</b>{{$data->kelas}}<br/> --}}
+                        {{-- <b>Juurusan :</b>{{$data->jurusan}}<br/> --}}
+                        <b>Jabatan :</b>{{$data->jabatan}}
+                    </td>
+                    <td>
+                        <b>Email :</b>{{$data->email}} <br/>
+                        <b>Telpon :</b>{{$data->no_hp}}
+                    </td>
+                </tr>
+                @endforeach
+                <tbody>
+                </tbody>
+            </table>
+        </div>
         <div class="col-9">
             <div class="media  p-3">
                 <img style="width:200px !important; height:200px !important;" src="

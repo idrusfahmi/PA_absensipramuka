@@ -20,7 +20,10 @@
 
 <div class="content">
     <div class="container-fluid bg-white">
-        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#InputIuran">
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#InputIuran"
+        style="@if (session('jabatan') == 'siswa' || session('jabatan') == 'pembina')
+        {{'display: none'}}
+    @endif">
             Import Iuran
           </button>
 

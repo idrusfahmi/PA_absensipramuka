@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class DataPengurusController extends Controller
 {
     function index(){
-        return view('datapengurus');
+        $data =  DB::table('pengurus')->get();
+        // dd($data);
+        return view('datapengurus', compact('data'));
     }
 }

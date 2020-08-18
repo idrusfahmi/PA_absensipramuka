@@ -9,6 +9,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\YourExport;
 use App\Imports\SKUImport;
+use App\pengurus;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SKUController extends Controller
